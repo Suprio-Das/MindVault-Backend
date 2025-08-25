@@ -12,3 +12,9 @@ const app = express();
 // Express and CORS Middlewares
 app.use(express.json())
 app.use(cors())
+
+// Testing Route
+app.get('/', (req, res) => {
+    res.send('Hello, MindVault is reading your mind...')
+})
+
