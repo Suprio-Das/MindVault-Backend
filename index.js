@@ -6,3 +6,9 @@ dotenv.config();
 // Declaring Port
 const PORT = process.env.PORT || 5000;
 
+// Creating Express App
+const app = express();
+
+// Express and CORS Middlewares
+app.use(express.json())
+app.use(cors())
