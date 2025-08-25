@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import DbConn from './utils/db.js';
 dotenv.config();
 
 // Declaring Port
@@ -12,6 +13,9 @@ const app = express();
 // Express and CORS Middlewares
 app.use(express.json())
 app.use(cors())
+
+// Database Connection Function
+DbConn();
 
 // Testing Route
 app.get('/', (req, res) => {
