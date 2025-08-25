@@ -18,3 +18,5 @@ app.get('/', (req, res) => {
     res.send('Hello, MindVault is reading your mind...')
 })
 
+// Listening to the PORT
+app.listen(PORT);
