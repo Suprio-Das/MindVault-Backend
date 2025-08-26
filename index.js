@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import DbConn from './utils/db.js';
+import AuthRoutes from './Routes/AuthRouter.js';
 dotenv.config();
 
 // Declaring Port
@@ -11,11 +12,14 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 // Express and CORS Middlewares
-app.use(express.json())
+app.use(express.json());
 app.use(cors())
 
 // Database Connection Function
 DbConn();
+
+// Routes
+app.use('/api/auth', AuthRoutes);
 
 // Testing Route
 app.get('/', (req, res) => {
