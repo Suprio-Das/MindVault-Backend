@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import DbConn from './utils/db.js';
 import AuthRoutes from './Routes/AuthRouter.js';
+import cookieParser from 'cookie-parser';
 dotenv.config();
 
 // Declaring Port
@@ -14,6 +15,7 @@ const app = express();
 // Express and CORS Middlewares
 app.use(express.json());
 app.use(cors())
+app.use(cookieParser());
 
 // Database Connection Function
 DbConn();
