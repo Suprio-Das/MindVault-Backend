@@ -27,3 +27,9 @@ export const register = async (req, res) => {
         res.send(error.message)
     }
 }
+
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    const user = await UserModel.findOne({ email });
+}
