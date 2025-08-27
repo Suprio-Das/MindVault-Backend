@@ -4,6 +4,12 @@ export const createNote = async (req, res) => {
         if (!name || !description) {
             return res.status(400).json({ success: false, message: 'All Fields are required' })
         }
+
+        const token = res.cookies.token;
+
+        if (!token) {
+            return res.status(401).json({ success: false, message: 'Unauthorized user.' })
+        }
     } catch (error) {
         res.json({ success: false, message: error });
     }
