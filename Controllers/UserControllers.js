@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
-import UserModel from '../Models/User';
-import NoteModel from '../Models/Note';
+import UserModel from '../Models/User.js';
+import NoteModel from '../Models/Note.js';
 
 export const createNote = async (req, res) => {
     try {
@@ -9,7 +9,8 @@ export const createNote = async (req, res) => {
             res.status(400).json({ success: false, message: 'All Fields are required' })
         }
 
-        const token = res.cookies.token;
+        const token = await req.cookies.token;
+        console.log(token)
 
         if (!token) {
             res.status(401).json({ success: false, message: 'Unauthorized user.' })
@@ -24,14 +25,17 @@ export const createNote = async (req, res) => {
         }
 
         const newNote = new NoteModel({
-            name, description, userId
+            name, description, userId: user._id
         })
 
-        newNote.save();
+        console.log(name, description)
+
+        await newNote.save();
 
         res.status(200).json({ success: true, message: 'New note created.' })
 
     } catch (error) {
-        res.json({ success: false, message: error });
+        // res.json({ success: false, message: error });
+        console.log(error)
     }
 }

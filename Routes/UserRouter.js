@@ -1,5 +1,5 @@
 import express from 'express'
-import { createNote } from '../Controllers/UserControllers';
+import { createNote } from '../Controllers/UserControllers.js';
 
 const UserRoutes = express.Router();
 
