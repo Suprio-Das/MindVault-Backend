@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import DbConn from './utils/db.js';
 import AuthRoutes from './Routes/AuthRouter.js';
 import cookieParser from 'cookie-parser';
+import UserRoutes from './Routes/UserRouter.js';
 dotenv.config();
 
 // Declaring Port
@@ -22,6 +23,7 @@ DbConn();
 
 // Routes
 app.use('/api/auth', AuthRoutes);
+app.use('/api/user', UserRoutes);
 
 // Testing Route
 app.get('/', (req, res) => {
