@@ -4,6 +4,6 @@ import { createNote, updateNote } from '../Controllers/UserControllers.js';
 const UserRoutes = express.Router();
 
 UserRoutes.post('/create', createNote)
-UserRoutes.post('/updateNote/:id', updateNote)
+UserRoutes.post('/update/:id', updateNote)
 
 export default UserRoutes;
