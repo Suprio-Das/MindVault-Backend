@@ -41,8 +41,9 @@ export const createNote = async (req, res) => {
 
 export const updateNote = async (req, res) => {
     try {
-        const note = req.params.id;
-        console.log(note);
+        const noteId = req.params.id;
+        const note = await NoteModel.findById(noteId);
+
     } catch (error) {
         res.status(501).json({ success: false, message: 'Internal Server Error' })
     }
