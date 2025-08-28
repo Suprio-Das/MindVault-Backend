@@ -32,10 +32,18 @@ export const createNote = async (req, res) => {
 
         await newNote.save();
 
-        res.status(200).json({ success: true, message: 'New note created.' })
+        res.status(200).json({ success: true, message: 'New note created.', newNote })
 
     } catch (error) {
-        // res.json({ success: false, message: error });
-        console.log(error)
+        res.json({ success: false, message: error });
+    }
+}
+
+export const updateNote = async (req, res) => {
+    try {
+        const note = req.params.id;
+        console.log(note);
+    } catch (error) {
+        res.status(501).json({ success: false, message: 'Internal Server Error' })
     }
 }
