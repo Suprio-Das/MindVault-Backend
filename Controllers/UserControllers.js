@@ -43,6 +43,26 @@ export const updateNote = async (req, res) => {
     try {
         const noteId = req.params.id;
         const note = await NoteModel.findById(noteId);
+        const token = await req.cookies.token;
+        console.log(note)
+
+        if (!token) {
+            return res.status(401).json({ success: false, message: 'Unauthorized user.' })
+        }
+
+        const decoded_token = jwt.verify(token, process.env.JWT_Secret)
+        const user = await UserModel.findById(decoded_token.userId);
+        const userId = user._id.toString();
+
+        if (!user) {
+            return res.status(401).json({ success: false, message: 'No user found' })
+        }
+
+        if (note.userId !== userId) {
+            return res.status(401).json({ success: false, message: 'Unauthorized. Operation closed' })
+        }
+
+        console.log("Update possible");
 
     } catch (error) {
         res.status(501).json({ success: false, message: 'Internal Server Error' })
