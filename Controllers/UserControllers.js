@@ -44,7 +44,7 @@ export const updateNote = async (req, res) => {
         const noteId = req.params.id;
         const note = await NoteModel.findById(noteId);
         const token = await req.cookies.token;
-        console.log(note)
+        const { name, description } = req.body;
 
         if (!token) {
             return res.status(401).json({ success: false, message: 'Unauthorized user.' })
@@ -62,7 +62,6 @@ export const updateNote = async (req, res) => {
             return res.status(401).json({ success: false, message: 'Unauthorized. Operation closed' })
         }
 
-        console.log("Update possible");
 
     } catch (error) {
         res.status(501).json({ success: false, message: 'Internal Server Error' })
