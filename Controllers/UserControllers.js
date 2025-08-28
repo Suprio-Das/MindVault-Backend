@@ -62,14 +62,14 @@ export const updateNote = async (req, res) => {
             return res.status(401).json({ success: false, message: 'Unauthorized. Operation closed' })
         }
 
+        const query = { _id: noteId }
+
         const updatedNote = {
             $set: {
                 name: name,
                 description: description
             }
         }
-
-        console.log(updatedNote)
 
     } catch (error) {
         res.status(501).json({ success: false, message: 'Internal Server Error' })
