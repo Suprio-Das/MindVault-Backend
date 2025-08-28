@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 import UserModel from '../Models/User.js';
 import NoteModel from '../Models/Note.js';
+import { ObjectId } from 'mongodb';
 
 export const createNote = async (req, res) => {
     try {
@@ -62,7 +63,7 @@ export const updateNote = async (req, res) => {
             return res.status(401).json({ success: false, message: 'Unauthorized. Operation closed' })
         }
 
-        const query = { _id: noteId }
+        const query = { _id: new ObjectId(noteId) }
 
         const updatedNote = {
             $set: {
@@ -70,6 +71,10 @@ export const updateNote = async (req, res) => {
                 description: description
             }
         }
+
+        const newUpdatedNote = await NoteModel.findByIdAndUpdate(query, updatedNote)
+
+        res.status(200).json({ success: true, message: "Note Updated Successfully", newUpdatedNote })
 
     } catch (error) {
         res.status(501).json({ success: false, message: 'Internal Server Error' })
