@@ -8,3 +8,5 @@ A modern and secure notes taking platform.
 - Update Notes
 - Delete Notes
 ### Admin Features
+- Login
+- View Users
