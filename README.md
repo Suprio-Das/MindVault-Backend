@@ -7,3 +7,4 @@ A modern and secure notes taking platform.
 - Create Notes
 - Update Notes
 - Delete Notes
+### Admin Features
