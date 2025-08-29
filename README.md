@@ -10,3 +10,4 @@ A modern and secure notes taking platform.
 ### Admin Features
 - Login
 - View Users
+- Delete Users
