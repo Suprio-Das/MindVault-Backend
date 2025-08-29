@@ -5,3 +5,4 @@ A modern and secure notes taking platform.
 - Register
 - Login
 - Create Notes
+- Update Notes
