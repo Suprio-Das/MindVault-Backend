@@ -6,3 +6,4 @@ A modern and secure notes taking platform.
 - Login
 - Create Notes
 - Update Notes
+- Delete Notes
