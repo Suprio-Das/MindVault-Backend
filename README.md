@@ -4,3 +4,4 @@ A modern and secure notes taking platform.
 
 ## Technologies:
 - Express
+- Node
