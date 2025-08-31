@@ -7,3 +7,4 @@ A modern and secure notes taking platform.
 - Node
 - MongoDb
 - Mongoose
+- Bcrypt
