@@ -9,3 +9,4 @@ A modern and secure notes taking platform.
 - Mongoose
 - Bcrypt
 - Json Web Token
+- Cookie-Parser
