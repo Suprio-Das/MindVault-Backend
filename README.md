@@ -8,3 +8,4 @@ A modern and secure notes taking platform.
 - MongoDb
 - Mongoose
 - Bcrypt
+- Json Web Token
