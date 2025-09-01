@@ -80,3 +80,7 @@ export const updateNote = async (req, res) => {
         res.status(501).json({ success: false, message: 'Internal Server Error' })
     }
 }
+
+export const deleteNote = async (req, res) => {
+    console.log("Delete controller");
+}
