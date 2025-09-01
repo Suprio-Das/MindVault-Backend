@@ -93,7 +93,13 @@ export const deleteNote = async (req, res) => {
         if (!deleteItem) {
             return res.status(404).json({ success: false, message: 'Item not found.' })
         }
-    } catch (error) {
 
+        const deleting = await NoteModel.findByIdAndDelete({ _id: new ObjectId(id) });
+        if (deleting) {
+            return res.status(400).json({ success: false, message: 'Note Deletion is  unsuccessfull.' })
+        }
+        res.status(200).json({ success: true, message: 'Note Deleted Successfully.' })
+    } catch (error) {
+        res.send(error);
     }
 }
