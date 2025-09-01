@@ -82,5 +82,13 @@ export const updateNote = async (req, res) => {
 }
 
 export const deleteNote = async (req, res) => {
-    console.log("Delete controller");
+    try {
+        const token = await req.cookies.token;
+
+        if (!token) {
+            return res.status(401).json({ success: false, message: 'Unauthorized user.' })
+        }
+    } catch (error) {
+
+    }
 }
