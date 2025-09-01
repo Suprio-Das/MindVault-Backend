@@ -88,16 +88,18 @@ export const deleteNote = async (req, res) => {
             return res.status(401).json({ success: false, message: 'Unauthorized user. Delete not proceed.' })
         }
 
-        const id = req.params.id;
-        const deleteItem = await NoteModel.findById(id);
+        const noteId = req.params.id;
+        const deleteItem = await NoteModel.findById(noteId);
         if (!deleteItem) {
             return res.status(404).json({ success: false, message: 'Item not found.' })
         }
 
-        const deleting = await NoteModel.findByIdAndDelete({ _id: new ObjectId(id) });
-        if (deleting) {
+        const filter = { _id: new ObjectId(noteId) }
+        const deleting = await NoteModel.deleteOne(filter)
+        if (!deleting) {
             return res.status(400).json({ success: false, message: 'Note Deletion is  unsuccessfull.' })
         }
+
         res.status(200).json({ success: true, message: 'Note Deleted Successfully.' })
     } catch (error) {
         res.send(error);
