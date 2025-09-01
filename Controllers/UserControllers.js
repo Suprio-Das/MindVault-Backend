@@ -90,6 +90,9 @@ export const deleteNote = async (req, res) => {
 
         const id = req.params.id;
         const deleteItem = await NoteModel.findById(id);
+        if (!deleteItem) {
+            return res.status(404).json({ success: false, message: 'Item not found.' })
+        }
     } catch (error) {
 
     }
