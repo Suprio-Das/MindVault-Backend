@@ -84,10 +84,12 @@ export const updateNote = async (req, res) => {
 export const deleteNote = async (req, res) => {
     try {
         const token = await req.cookies.token;
-
         if (!token) {
-            return res.status(401).json({ success: false, message: 'Unauthorized user.' })
+            return res.status(401).json({ success: false, message: 'Unauthorized user. Delete not proceed.' })
         }
+
+        const id = req.params.id;
+        const deleteItem = await NoteModel.findById(id);
     } catch (error) {
 
     }
