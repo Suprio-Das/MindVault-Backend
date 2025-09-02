@@ -5,6 +5,7 @@ import DbConn from './utils/db.js';
 import AuthRoutes from './Routes/AuthRouter.js';
 import cookieParser from 'cookie-parser';
 import UserRoutes from './Routes/UserRouter.js';
+import AdminRoutes from './Routes/AdminRouter.js';
 dotenv.config();
 
 // Declaring Port
@@ -24,7 +25,7 @@ DbConn();
 // Routes
 app.use('/api/auth', AuthRoutes);
 app.use('/api/user', UserRoutes);
-
+app.use('/api/admin', AdminRoutes);
 // Testing Route
 app.get('/', (req, res) => {
     res.send('Hello, MindVault is reading your mind...')
