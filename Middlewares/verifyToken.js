@@ -12,8 +12,14 @@ export const isAdmin = async (req, res, next) => {
 
         const user = await UserModel.findById(decoded_token.userId);
         if (!user) {
-            res.status(400).json({ message: 'User not found' });
+            res.status(404).json({ message: 'User not found' });
         }
+        if (user.role !== 'admin') {
+            res.status(401).json({ success: false, message: 'Unauthorized access denied.' })
+        }
+
+        req.user = user;
+        next();
     } catch (error) {
         res.send(error);
     }
