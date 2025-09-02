@@ -1,6 +1,6 @@
 import express from 'express'
-import { isAdmin } from '../Middlewares/verifyToken';
-import { GetUsers } from '../Controllers/AdminControllers';
+import { isAdmin } from '../Middlewares/verifyToken.js';
+import { GetUsers } from '../Controllers/AdminControllers.js';
 
 const AdminRoutes = express.Router();
 
