@@ -1,2 +1,9 @@
 import express from 'express'
-console.log('Admin Controllers')
+
+export const GetUsers = async (req, res) => {
+    try {
+        console.log('Users')
+    } catch (error) {
+        res.send(error);
+    }
+}
